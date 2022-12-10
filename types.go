@@ -12,8 +12,8 @@ type IotClickType string
 
 const (
 	SINGLE_CLICK IotClickType = "SINGLE"
-	DOUBLE_CLICK IotClickType = "DOuBLE"
-	LONG_PRESS   IotClickType = "LONG_PRESS"
+	DOUBLE_CLICK IotClickType = "DOUBLE"
+	LONG_PRESS   IotClickType = "LONG"
 )
 
 // IOTOneClickRequestHandler process and persist captured request for time tracking records.
