@@ -27,6 +27,7 @@ func (handler *IOTOneClickRequestHandler) Process(event events.IoTOneClickEvent)
 	handler.logger.Statusf("Receive capture request (%s) from %s at %s", timeTrackingRecord.ClickType, timeTrackingRecord.DeviceId, timeTrackingRecord.Timestamp)
 
 	recordType := toTimeTrackingRecordType(timeTrackingRecord.ClickType)
+	handler.logger.Debugf("Capture %s for device %s", recordType, timeTrackingRecord.DeviceId)
 	var err error
 	if timeTrackingRecord.Timestamp == nil {
 		err = handler.timeTracker.Capture(timeTrackingRecord.DeviceId, recordType)
