@@ -21,7 +21,7 @@ func main() {
 	lambda.Start(handler.Process)
 }
 
-// bootstrap loads config and creates a new scheduled collector with a exchangerate datasource.
+// bootstrap loads config and creates a event handler.
 func bootstrap() (Handler, error) {
 
 	conf, err := loadConfig()

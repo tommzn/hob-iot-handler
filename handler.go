@@ -8,7 +8,7 @@ import (
 	timetracker "github.com/tommzn/hob-timetracker"
 )
 
-// NewRequestHandler create a handler to process API Gateway requests.
+// NewRequestHandler create a handler to process AWS IOT 1-Click events.
 func newRequestHandler(timeTracker timetracker.TimeTracker, logger log.Logger) *IOTOneClickRequestHandler {
 	return &IOTOneClickRequestHandler{
 		logger:      logger,
@@ -16,7 +16,7 @@ func newRequestHandler(timeTracker timetracker.TimeTracker, logger log.Logger) *
 	}
 }
 
-// Process will process time tracking request and persist it using time tracker repository.
+// Process will create time tracking record from passed IOT click event.
 func (handler *IOTOneClickRequestHandler) Process(event events.IoTOneClickEvent) error {
 
 	defer handler.logger.Flush()
@@ -54,6 +54,7 @@ func toTimeTrackingRecordType(clickType IotClickType) timetracker.RecordType {
 	}
 }
 
+// ToTimeTrackingRecord extacts values for a time tracking record from passed IOT click event.
 func toTimeTrackingRecord(event events.IoTOneClickEvent) TimeTrackingRecord {
 	timeTrackingRecord := TimeTrackingRecord{
 		DeviceId:  event.DeviceInfo.DeviceID,
